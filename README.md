@@ -1,4 +1,4 @@
-# n8n-nodes-workadventure
+# @workadventure/n8n-nodes-workadventure
 
 This is an n8n community node package. It lets you use [WorkAdventure](https://workadventu.re) in your n8n workflows.
 
@@ -18,7 +18,7 @@ workflows from [WorkAdventure webhooks](https://docs.workadventu.re/developer/ho
 ## Installation
 
 Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community
-nodes documentation and install `n8n-nodes-workadventure`.
+nodes documentation and install `@workadventure/n8n-nodes-workadventure`.
 
 ## Credentials
 

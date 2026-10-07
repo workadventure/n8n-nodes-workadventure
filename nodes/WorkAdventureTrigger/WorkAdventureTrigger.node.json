@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-workadventure.workAdventureTrigger",
+	"node": "@workadventure/n8n-nodes-workadventure.workAdventureTrigger",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication", "Productivity"],

@@ -1,5 +1,5 @@
 {
-	"name": "n8n-nodes-workadventure",
+	"name": "@workadventure/n8n-nodes-workadventure",
 	"version": "1.0.0",
 	"description": "n8n nodes for WorkAdventure: manage the members of your world and start workflows from its webhooks",
 	"license": "MIT",
@@ -35,6 +35,9 @@
 	"files": [
 		"dist"
 	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"n8n": {
 		"n8nNodesApiVersion": 1,
 		"strict": true,
