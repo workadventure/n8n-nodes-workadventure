@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-workadventure",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "n8n nodes for WorkAdventure: manage the members of your world and start workflows from its webhooks",
 	"license": "MIT",
 	"homepage": "https://github.com/workadventure/n8n-nodes-workadventure",
