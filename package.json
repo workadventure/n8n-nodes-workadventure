@@ -1,0 +1,59 @@
+{
+	"name": "n8n-nodes-workadventure",
+	"version": "0.1.0",
+	"description": "n8n nodes for WorkAdventure: manage the members of your world and start workflows from its webhooks",
+	"license": "MIT",
+	"homepage": "https://github.com/workadventure/n8n-nodes-workadventure",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"workadventure",
+		"virtual-office"
+	],
+	"author": {
+		"name": "WorkAdventure",
+		"email": "hello@workadventu.re",
+		"url": "https://workadventu.re"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/workadventure/n8n-nodes-workadventure.git"
+	},
+	"bugs": {
+		"url": "https://github.com/workadventure/n8n-nodes-workadventure/issues"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease",
+		"test": "n8n-node build && node --test"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/WorkAdventureApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/WorkAdventure/WorkAdventure.node.js",
+			"dist/nodes/WorkAdventureTrigger/WorkAdventureTrigger.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "^0.51.3",
+		"eslint": "9.32.0",
+		"prettier": "3.6.2",
+		"release-it": "^21.1.0",
+		"typescript": "5.9.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
