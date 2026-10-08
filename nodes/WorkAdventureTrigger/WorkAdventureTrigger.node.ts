@@ -5,6 +5,7 @@ import {
 	type IHookFunctions,
 	type IHttpRequestMethods,
 	type INodeType,
+	type INodePropertyOptions,
 	type INodeTypeDescription,
 	type IWebhookFunctions,
 	type IWebhookResponseData,
@@ -85,6 +86,42 @@ function header(value: string | string[] | undefined): string | undefined {
 	return Array.isArray(value) ? value.join(' ') : value;
 }
 
+const EVENT_OPTIONS: INodePropertyOptions[] = [
+	{
+		name: 'Analytics (Experimental)',
+		value: 'analytics',
+		description:
+			'Every analytics event of the world, batched as analytics.batch (up to 100 per delivery). High volume, and event names and properties may still change.',
+	},
+	{
+		name: 'Consent Changed',
+		value: 'consent',
+		description:
+			'Someone gave, refused or withdrew their consent for a purpose (consent.changed)',
+	},
+	{
+		name: 'Member Connecting',
+		value: 'auth',
+		description:
+			"A member is logging in (member.connecting). Sent synchronously: access waits up to 5 seconds. Carries the member's OAuth access tokens.",
+	},
+	{
+		name: 'Recording Completed',
+		value: 'recording',
+		description: 'A meeting recording is ready to download (recording.completed)',
+	},
+	{
+		name: 'Visitor Registered',
+		value: 'visitor',
+		description: 'A visitor account became usable (visitor.registered)',
+	},
+];
+
+/** Shown under the node on the canvas: the names of the picked events, not their values ("auth"). */
+const EVENT_NAMES = JSON.stringify(
+	Object.fromEntries(EVENT_OPTIONS.map(({ value, name }) => [value, name])),
+);
+
 export class WorkAdventureTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'WorkAdventure Trigger',
@@ -95,7 +132,7 @@ export class WorkAdventureTrigger implements INodeType {
 		},
 		group: ['trigger'],
 		version: 1,
-		subtitle: '={{$parameter["events"].join(", ")}}',
+		subtitle: `={{$parameter["events"].map(event => (${EVENT_NAMES})[event] || event).join(", ")}}`,
 		description: 'Starts the workflow when events happen in a WorkAdventure world',
 		defaults: {
 			name: 'WorkAdventure Trigger',
@@ -119,36 +156,7 @@ export class WorkAdventureTrigger implements INodeType {
 				required: true,
 				default: [],
 				description: 'The events to receive. Each delivery is one event, routed on its "type".',
-				options: [
-					{
-						name: 'Analytics (Experimental)',
-						value: 'analytics',
-						description:
-							'Every analytics event of the world, batched as analytics.batch (up to 100 per delivery). High volume, and event names and properties may still change.',
-					},
-					{
-						name: 'Consent Changed',
-						value: 'consent',
-						description:
-							'Someone gave, refused or withdrew their consent for a purpose (consent.changed)',
-					},
-					{
-						name: 'Member Connecting',
-						value: 'auth',
-						description:
-							"A member is logging in (member.connecting). Sent synchronously: access waits up to 5 seconds. Carries the member's OAuth access tokens.",
-					},
-					{
-						name: 'Recording Completed',
-						value: 'recording',
-						description: 'A meeting recording is ready to download (recording.completed)',
-					},
-					{
-						name: 'Visitor Registered',
-						value: 'visitor',
-						description: 'A visitor account became usable (visitor.registered)',
-					},
-				],
+				options: EVENT_OPTIONS,
 			},
 			{
 				displayName: 'Respond',
