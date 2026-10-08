@@ -6,7 +6,7 @@ WorkAdventure is a virtual office and collaboration platform for remote and hybr
 members of your world through the [Inbound API](https://docs.workadventu.re/developer/inbound-api) and starts
 workflows from [WorkAdventure webhooks](https://docs.workadventu.re/developer/hook-api).
 
-[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/sustainable-use-license/) workflow automation platform.
+[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/n8n-community-license) workflow automation platform.
 
 - [Installation](#installation)
 - [Credentials](#credentials)
